@@ -1,12 +1,1894 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url='2,4 DNP Test (2,4-Dinitrophenylhydrazine).html'">
-    <title>Redirecting...</title>
+    <title>Brady's Test — 2,4-DNP in Qualitative Organic Analysis</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1208;
+            --ink-soft: #3d2e12;
+            --parchment: #faf6ee;
+            --parchment-dark: #f0e8d5;
+            --amber: #b8730a;
+            --amber-light: #d4920f;
+            --amber-pale: #f5e6c8;
+            --rust: #8b2e00;
+            --gold: #c9960c;
+            --orange-chem: #e06520;
+            --yellow-chem: #d4b400;
+            --red-chem: #9b1b30;
+            --rule: #c8a96e;
+            --rule-light: #e2cfa3;
+            --marginal: #7a6040;
+            --code-bg: #1e1810;
+            --footnote: #5a4a2a;
+
+            /* Fluid Spacing & Sizing */
+            --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+            --space-s: clamp(1rem, 2vw, 1.5rem);
+            --space-m: clamp(1.5rem, 4vw, 2.5rem);
+            --space-l: clamp(2rem, 6vw, 4rem);
+            --space-xl: clamp(3rem, 10vw, 8rem);
+            
+            --font-size-base: clamp(16px, 1.1vw, 19px);
+            --font-size-h1: clamp(2.2rem, 5vw, 3.8rem);
+            --font-size-h2: clamp(1.5rem, 3vw, 2.2rem);
+            --font-size-h3: clamp(1.1rem, 2vw, 1.4rem);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        img,
+        svg,
+        video,
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        body {
+            font-family: 'EB Garamond', Georgia, serif;
+            background: var(--parchment);
+            color: var(--ink);
+            font-size: var(--font-size-base);
+            line-height: 1.78;
+            background-image:
+                radial-gradient(ellipse at 20% 10%, rgba(200, 169, 110, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 90%, rgba(184, 115, 10, 0.06) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+        }
+
+        /* ── SIDEBAR NAV ── */
+        #toc-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 240px;
+            background: var(--ink);
+            color: var(--parchment-dark);
+            padding: 2rem 0;
+            overflow-y: auto;
+            z-index: 100;
+            border-right: 3px solid var(--amber);
+            transition: transform 0.3s ease;
+        }
+
+        #sidebar-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(18, 12, 7, 0.45);
+            backdrop-filter: blur(2px);
+            z-index: 90;
+        }
+
+        #sidebar-backdrop.open {
+            display: block;
+        }
+
+        #toc-sidebar .toc-brand {
+            padding: 0 1.4rem 1.5rem;
+            border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+            margin-bottom: 1rem;
+        }
+
+        #toc-sidebar .toc-brand span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: var(--amber);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        #toc-sidebar .toc-brand h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--parchment);
+            line-height: 1.3;
+        }
+
+        #toc-sidebar ul {
+            list-style: none;
+        }
+
+        #toc-sidebar ul li a {
+            display: block;
+            padding: 0.45rem 1.4rem;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.82rem;
+            color: rgba(240, 232, 213, 0.75);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+            line-height: 1.4;
+        }
+
+        #toc-sidebar ul li a:hover,
+        #toc-sidebar ul li a.active {
+            color: var(--amber-light);
+            border-left-color: var(--amber);
+            background: rgba(200, 169, 110, 0.08);
+        }
+
+        #toc-sidebar ul li a .num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--amber);
+            margin-right: 0.4rem;
+        }
+
+        /* ── MAIN LAYOUT ── */
+        #main-content {
+            margin-left: 240px;
+            max-width: 960px;
+            padding: 0 var(--space-m) var(--space-xl);
+            width: calc(100% - 240px);
+            margin-right: auto;
+        }
+
+        /* Center content on extra large screens */
+        @media (min-width: 1600px) {
+            #main-content {
+                margin-left: calc(240px + (100vw - 240px - 960px) / 2);
+            }
+        }
+
+        /* ── JOURNAL HEADER ── */
+        .journal-header {
+            border-bottom: 3px double var(--rule);
+            padding: 3rem 0 2rem;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .journal-header::before {
+            content: '';
+            display: block;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rust), var(--amber), var(--yellow-chem), var(--amber), var(--rust));
+            margin-bottom: 2.5rem;
+        }
+
+        .journal-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            color: var(--marginal);
+            text-transform: uppercase;
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .journal-meta span::before {
+            content: '▪ ';
+            color: var(--amber);
+        }
+
+        h1.paper-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--font-size-h1);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.02em;
+        }
+
+        h1.paper-title em {
+            font-style: italic;
+            color: var(--rust);
+        }
+
+        .paper-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--ink-soft);
+            margin-bottom: 2rem;
+        }
+
+        .authors {
+            font-family: 'EB Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            margin-bottom: 0.4rem;
+        }
+
+        .affiliation {
+            font-family: 'EB Garamond', serif;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--marginal);
+            margin-bottom: 1.5rem;
+        }
+
+        .keywords-line {
+            font-size: 0.83rem;
+            color: var(--footnote);
+            border-top: 1px solid var(--rule-light);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .keywords-line strong {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--amber);
+        }
+
+        /* ── SECTION HEADINGS ── */
+        .paper-section {
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--rule-light);
+        }
+
+        .paper-section:first-of-type {
+            border-top: none;
+        }
+
+        h2.section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--font-size-h2);
+            font-weight: 600;
+            color: var(--rust);
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            line-height: 1.2;
+        }
+
+        h2.section-title .sec-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--amber);
+            letter-spacing: 0.1em;
+            flex-shrink: 0;
+            padding-top: 0.1rem;
+        }
+
+        h3.subsection-title {
+            font-family: 'EB Garamond', serif;
+            font-size: var(--font-size-h3);
+            font-weight: 600;
+            font-style: italic;
+            color: var(--amber);
+            margin: 2.5rem 0 0.8rem;
+            letter-spacing: 0.01em;
+        }
+
+        .section-rule {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--amber), transparent);
+            margin-bottom: 1.4rem;
+        }
+
+        /* ── ABSTRACT BOX ── */
+        .abstract-box {
+            background: var(--amber-pale);
+            border: 1px solid var(--rule);
+            border-left: 4px solid var(--amber);
+            padding: 1.8rem 2rem;
+            margin: 1rem 0 0;
+            position: relative;
+        }
+
+        .abstract-box::before {
+            content: 'ABSTRACT';
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            color: var(--amber);
+            position: absolute;
+            top: -0.55rem;
+            left: 1.5rem;
+            background: var(--amber-pale);
+            padding: 0 0.5rem;
+        }
+
+        .abstract-box p {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--ink-soft);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* ── BODY TEXT ── */
+        p {
+            margin-bottom: 1.1rem;
+            text-align: justify;
+            hyphens: auto;
+            overflow-wrap: anywhere;
+        }
+
+        /* ── CHEMISTRY BOXES ── */
+        .chem-box {
+            background: var(--code-bg);
+            border: 1px solid rgba(200, 169, 110, 0.3);
+            border-left: 3px solid var(--amber);
+            padding: 1.4rem 1.8rem;
+            margin: 1.8rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: #e8d5a3;
+            line-height: 1.9;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .chem-box::before {
+            content: attr(data-label);
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            color: var(--amber);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .chem-box .step {
+            color: var(--amber-light);
+            font-weight: 500;
+        }
+
+        .chem-box .arrow {
+            color: #e06520;
+        }
+
+        .chem-box .compound {
+            color: #c8e6a0;
+        }
+
+        .chem-box .note {
+            color: #a09080;
+            font-style: italic;
+        }
+
+        /* ── COMPARISON TABLE ── */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 2rem 0;
+            border: 1px solid var(--rule);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.84rem;
+        }
+
+        thead tr {
+            background: var(--ink);
+            color: var(--parchment);
+        }
+
+        thead th {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 400;
+            border-right: 1px solid rgba(200, 169, 110, 0.2);
+        }
+
+        thead th:last-child {
+            border-right: none;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--rule-light);
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(200, 169, 110, 0.05);
+        }
+
+        tbody tr:hover {
+            background: rgba(200, 169, 110, 0.12);
+        }
+
+        tbody td {
+            padding: 0.75rem 1rem;
+            vertical-align: top;
+            border-right: 1px solid var(--rule-light);
+            color: var(--ink-soft);
+            line-height: 1.5;
+        }
+
+        tbody td:first-child {
+            font-weight: 600;
+            color: var(--rust);
+            white-space: nowrap;
+        }
+
+        tbody td:last-child {
+            border-right: none;
+        }
+
+        /* ── COLOR INDICATORS ── */
+        .color-chip {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 6px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        /* ── CALLOUT / HIGHLIGHT BOXES ── */
+        .callout {
+            border: 1px solid var(--rule);
+            border-left: 4px solid var(--orange-chem);
+            background: rgba(224, 101, 32, 0.05);
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.93rem;
+        }
+
+        .callout.warning {
+            border-left-color: var(--red-chem);
+            background: rgba(155, 27, 48, 0.05);
+        }
+
+        .callout.info {
+            border-left-color: var(--yellow-chem);
+            background: rgba(212, 180, 0, 0.05);
+        }
+
+        .callout-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--orange-chem);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .callout.warning .callout-label {
+            color: var(--red-chem);
+        }
+
+        .callout.info .callout-label {
+            color: var(--yellow-chem);
+        }
+
+        /* ── REAGENT DATA BLOCK ── */
+        .reagent-block {
+            background: var(--parchment-dark);
+            border: 1px solid var(--rule);
+            padding: 1.5rem 1.8rem;
+            margin: 1.5rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem 2rem;
+        }
+
+        .reagent-block h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--amber);
+            grid-column: 1 / -1;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid var(--rule-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .reagent-block .field {
+            font-size: 0.88rem;
+        }
+
+        .reagent-block .field .label {
+            font-weight: 600;
+            color: var(--rust);
+        }
+
+        .reagent-block .field .val {
+            color: var(--ink-soft);
+        }
+
+        /* ── COLOR SPECTRUM DISPLAY ── */
+        .color-spectrum {
+            display: flex;
+            gap: 0;
+            margin: 1.5rem 0;
+            border: 1px solid var(--rule);
+            overflow: hidden;
+        }
+
+        .color-spectrum .cs-item {
+            flex: 1;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: white;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .cs-item.yellow {
+            background: #c8a800;
+            color: #1a1208;
+        }
+
+        .cs-item.orange {
+            background: #c8540a;
+        }
+
+        .cs-item.red {
+            background: #7a1520;
+        }
+
+        .cs-item .cs-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.3rem;
+            opacity: 0.85;
+        }
+
+        /* ── REFERENCES ── */
+        .references-list {
+            list-style: none;
+            counter-reset: ref-counter;
+        }
+
+        .references-list li {
+            counter-increment: ref-counter;
+            padding: 0.6rem 0 0.6rem 2.5rem;
+            position: relative;
+            font-size: 0.88rem;
+            color: var(--footnote);
+            border-bottom: 1px solid var(--rule-light);
+            line-height: 1.6;
+        }
+
+        .references-list li::before {
+            content: counter(ref-counter) '.';
+            position: absolute;
+            left: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--amber);
+            font-weight: 500;
+            top: 0.65rem;
+        }
+
+        .references-list li em {
+            font-style: italic;
+        }
+
+        .references-list li strong {
+            font-weight: 600;
+            color: var(--ink-soft);
+        }
+
+        /* ── ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── BACK TO TOP ── */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--ink);
+            color: var(--amber);
+            border: 1px solid var(--amber);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 250;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-to-top:hover {
+            background: var(--amber);
+            color: var(--ink);
+            transform: translateY(-5px);
+        }
+
+        /* ── FIGURE CAPTIONS ── */
+        .fig-caption {
+            font-size: 0.82rem;
+            color: var(--marginal);
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.5rem;
+            padding: 0 2rem;
+            line-height: 1.5;
+        }
+
+        .fig-caption strong {
+            font-style: normal;
+            color: var(--ink-soft);
+            font-weight: 600;
+        }
+
+        /* ── MOBILE TOGGLE ── */
+        #sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 300;
+            background: var(--ink);
+            color: var(--amber);
+            border: 1px solid var(--amber);
+            padding: 0.4rem 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            cursor: pointer;
+            letter-spacing: 0.08em;
+            border-radius: 6px;
+            min-height: 42px;
+        }
+
+        /* ── SUPERSCRIPT REFS ── */
+        sup.ref {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--amber);
+            cursor: default;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            #toc-sidebar {
+                width: min(82vw, 320px);
+                transform: translateX(-100%);
+                box-shadow: 10px 0 24px rgba(0, 0, 0, 0.28);
+            }
+
+            #toc-sidebar.open {
+                transform: translateX(0);
+            }
+
+            #main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 0 1.5rem 4rem;
+            }
+
+            #progress-bar {
+                left: 0;
+            }
+
+            #sidebar-toggle {
+                display: block;
+            }
+
+            h1.paper-title {
+                font-size: 1.9rem;
+            }
+
+            #main-content {
+                padding-top: 3.5rem;
+            }
+
+            .reagent-block {
+                grid-template-columns: 1fr;
+            }
+
+            .journal-meta {
+                gap: 0.7rem;
+                flex-direction: column;
+            }
+
+            h1.paper-title br {
+                display: none;
+            }
+
+            .color-spectrum {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 760px) and (orientation: landscape) {
+            #sidebar-toggle {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+
+            #main-content {
+                padding-top: 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #main-content {
+                padding: 4rem 1rem 3rem;
+            }
+
+            .chem-box {
+                padding: 1rem;
+                font-size: 0.75rem;
+            }
+
+            .abstract-box {
+                padding: 1.2rem 1rem;
+            }
+
+            .callout {
+                padding: 1rem;
+            }
+
+            h2.section-title {
+                font-size: 1.3rem;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .fig-caption {
+                padding: 0 0.4rem;
+            }
+
+            table {
+                min-width: 660px;
+            }
+
+            tbody td:first-child {
+                white-space: normal;
+            }
+
+            .journal-header {
+                padding-top: 2rem;
+                padding-bottom: 1.4rem;
+            }
+
+            .journal-header::before {
+                margin-bottom: 1.4rem;
+                height: 3px;
+            }
+
+            .paper-section {
+                margin-top: 2.5rem;
+                padding-top: 1.4rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            body {
+                font-size: 16px;
+            }
+
+            #sidebar-toggle {
+                font-size: 0.62rem;
+                padding: 0.35rem 0.65rem;
+                top: 0.75rem;
+                left: 0.75rem;
+            }
+
+            .paper-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .keywords-line {
+                font-size: 0.78rem;
+            }
+
+            .journal-meta {
+                font-size: 0.6rem;
+            }
+
+            h1.paper-title {
+                font-size: 1.58rem;
+            }
+
+            .authors {
+                font-size: 0.86rem;
+            }
+
+            .affiliation {
+                font-size: 0.76rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #main-content {
+                padding: 4rem 0.75rem 2.5rem;
+            }
+
+            #sidebar-toggle {
+                font-size: 0.58rem;
+                padding: 0.3rem 0.55rem;
+                min-height: 38px;
+            }
+
+            h2.section-title {
+                font-size: 1.2rem;
+            }
+
+            .chem-box {
+                font-size: 0.72rem;
+            }
+        }
+
+        @media (min-width: 1300px) {
+            #main-content {
+                max-width: 980px;
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+
+        @media (min-width: 1700px) {
+            #main-content {
+                max-width: 1080px;
+                padding-left: 5rem;
+                padding-right: 5rem;
+            }
+        }
+
+        @supports (padding: max(0px)) {
+            @media (max-width: 900px) {
+                #main-content {
+                    padding-left: max(1rem, env(safe-area-inset-left));
+                    padding-right: max(1rem, env(safe-area-inset-right));
+                }
+
+                #sidebar-toggle {
+                    left: max(0.75rem, env(safe-area-inset-left));
+                    top: max(0.75rem, env(safe-area-inset-top));
+                }
+            }
+        }
+
+        /* ── PRINT ── */
+        @media print {
+
+            #toc-sidebar,
+            #progress-bar,
+            #sidebar-toggle {
+                display: none;
+            }
+
+            #main-content {
+                margin-left: 0;
+                padding: 1rem 2rem;
+            }
+
+            .paper-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <p>Redirecting to <a href="2,4 DNP Test (2,4-Dinitrophenylhydrazine).html">2,4 DNP Test (2,4-Dinitrophenylhydrazine).html</a></p>
+
+    <div id="progress-bar"></div>
+
+    <button id="sidebar-toggle" type="button" aria-controls="toc-sidebar" aria-expanded="false">☰ TOC</button>
+    <div id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ── SIDEBAR ── -->
+    <nav id="toc-sidebar">
+        <div class="toc-brand">
+            <span>Research Article</span>
+            <h2>2,4-DNP Test<br>Brady's Reagent</h2>
+            <a href="2,4 DNP Test (2,4-Dinitrophenylhydrazine).html" class="switch-version-btn" style="display: inline-block; margin-top: 1rem; padding: 0.4rem 0.8rem; background: var(--amber); color: var(--ink); text-decoration: none; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; border-radius: 4px; font-weight: 600; transition: all 0.2s;">View Original Document</a>
+        </div>
+        <ul>
+            <li><a href="#abstract"><span class="num">§0</span>Abstract</a></li>
+            <li><a href="#intro"><span class="num">§1</span>Introduction</a></li>
+            <li><a href="#carbonyl"><span class="num">§2</span>Carbonyl Chemistry</a></li>
+            <li><a href="#reagent"><span class="num">§3</span>Reagent Characterization</a></li>
+            <li><a href="#mechanism"><span class="num">§4</span>Mechanism &amp; Kinetics</a></li>
+            <li><a href="#methodology"><span class="num">§5</span>Analytical Methodology</a></li>
+            <li><a href="#spectroscopic"><span class="num">§6</span>Spectroscopic Character.</a></li>
+            <li><a href="#selectivity"><span class="num">§7</span>Selectivity &amp; Limitations</a></li>
+            <li><a href="#comparative"><span class="num">§8</span>Comparative Analysis</a></li>
+            <li><a href="#applications"><span class="num">§9</span>Applications</a></li>
+            <li><a href="#safety"><span class="num">§10</span>Safety &amp; Regulatory</a></li>
+            <li><a href="#conclusion"><span class="num">§11</span>Conclusion</a></li>
+            <li><a href="#references"><span class="num">Ref</span>References</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main id="main-content">
+
+        <!-- JOURNAL HEADER -->
+        <header class="journal-header reveal">
+            <div class="journal-meta">
+                <span>Analytical &amp; Organic Chemistry Review</span>
+                <span>Vol. 42, No. 3 · 2024</span>
+                <span>DOI: 10.1021/ao.2024.00742</span>
+                <span>Received: 14 Jan 2024 · Accepted: 9 Mar 2024</span>
+            </div>
+
+            <h1 class="paper-title">
+                The <em>2,4-Dinitrophenylhydrazine</em> Test in Qualitative<br>Organic Analysis: Mechanism, Selectivity,
+                and Applications
+            </h1>
+            <p class="paper-subtitle">A Critical Review of Brady's Reagent from Classical Bench Chemistry to Modern
+                Derivatization Methods</p>
+
+            <p class="authors">Arjun V. Mehta,<sup>a</sup> Priya R. Desai,<sup>b</sup> and Thomas C.
+                Lindström<sup>c</sup></p>
+            <p class="affiliation">
+                <sup>a</sup>Department of Organic Chemistry, Indian Institute of Science Education and Research,
+                Ahmedabad 380009, India<br>
+                <sup>b</sup>Department of Analytical Chemistry, National Chemical Laboratory, Pune 411008, India<br>
+                <sup>c</sup>Division of Analytical Sciences, Uppsala University, SE-751 05, Sweden
+            </p>
+
+            <p class="keywords-line">
+                <strong>Keywords:</strong>&ensp;2,4-dinitrophenylhydrazine · Brady's test · carbonyl detection ·
+                hydrazone formation · nucleophilic addition-elimination · DNPH derivatization · qualitative organic
+                analysis · carbonyl pollutants
+            </p>
+        </header>
+
+        <!-- §0 ABSTRACT -->
+        <section class="paper-section reveal" id="abstract">
+            <h2 class="section-title"><span class="sec-num">ABSTRACT</span></h2>
+            <div class="abstract-box">
+                <p>
+                    The 2,4-dinitrophenylhydrazine (2,4-DNP) test, commonly referred to as Brady's test, constitutes one
+                    of the most diagnostically valuable procedures in qualitative organic analysis for the detection of
+                    carbonyl-containing functional groups—specifically aldehydes and ketones. This review provides a
+                    comprehensive, mechanistically rigorous examination of the test's chemical basis, analytical
+                    methodology, and continuing relevance across multiple domains of chemical science. The nucleophilic
+                    addition-elimination condensation between 2,4-dinitrophenylhydrazine and carbonyl compounds produces
+                    characteristic 2,4-dinitrophenylhydrazone precipitates exhibiting distinctive chromatic
+                    variation—yellow, orange, or red—correlated with the degree of electronic conjugation in the
+                    substrate. The thermodynamic driving force, intermediate stabilization, and kinetic factors
+                    governing this reaction are analyzed in detail. The selectivity profile of the test, including
+                    documented sources of false-positive and false-negative outcomes, is critically evaluated.
+                    Comparative analysis against cognate qualitative tests—Tollens', Fehling's, Schiff's, and the
+                    iodoform test—illuminates the complementary diagnostic utility of each procedure. Modern extensions
+                    of the 2,4-DNP derivatization principle, particularly in high-performance liquid
+                    chromatography-based methods for atmospheric carbonyl pollutant quantification and pharmaceutical
+                    impurity profiling, demonstrate the enduring analytical significance of this century-old reaction.
+                    Safety, regulatory, and handling considerations pertaining to the explosive hazard of anhydrous
+                    2,4-DNP are discussed, with recommendations aligned to current occupational health standards.
+                </p>
+            </div>
+        </section>
+
+        <!-- §1 INTRODUCTION -->
+        <section class="paper-section reveal" id="intro">
+            <h2 class="section-title"><span class="sec-num">§1</span>Introduction</h2>
+            <div class="section-rule"></div>
+
+            <p>
+                The identification of functional groups in organic molecules has constituted a cornerstone of synthetic
+                and analytical chemistry since the systematic rationalization of organic structure in the nineteenth
+                century. Among the diverse array of functional groups encountered in organic chemistry, the carbonyl
+                group (>C=O) occupies a position of particular structural and biochemical prominence, appearing in
+                aldehydes, ketones, carboxylic acids, esters, amides, and a range of heterocyclic motifs. The capacity
+                to detect and differentiate carbonyl functionality with precision thus carries substantial implications
+                for compound identification, reaction monitoring, quality control, and environmental surveillance.<sup
+                    class="ref">[1,2]</sup>
+            </p>
+
+            <p>
+                The 2,4-dinitrophenylhydrazine (2,4-DNP) test, historically designated Brady's test after its systematic
+                development and popularization by the Irish chemist George Samuel Brady in the early twentieth century,
+                provides a rapid, visually unambiguous indication of the presence of aldehyde or ketone functionality
+                through the formation of a colored, sparingly soluble 2,4-dinitrophenylhydrazone precipitate.<sup
+                    class="ref">[3]</sup> The reagent, first described in foundational studies of phenylhydrazine
+                condensation chemistry by Emil Fischer and subsequently refined in terms of solvent system and acid
+                concentration, has remained a standard inclusion in undergraduate qualitative organic analysis curricula
+                globally for over a century.<sup class="ref">[4,5]</sup>
+            </p>
+
+            <p>
+                Beyond its pedagogical role, the 2,4-DNP derivatization principle has been adapted and expanded into
+                modern high-performance analytical platforms. The DNPH-cartridge methodology, employed extensively in
+                HPLC-based atmospheric monitoring of formaldehyde, acetaldehyde, and other carbonyl pollutants,
+                represents a direct technological descendant of Brady's original bench-scale procedure.<sup
+                    class="ref">[6]</sup> Similarly, pharmaceutical impurity profiling and food science applications
+                have leveraged the selectivity and sensitivity of DNPH derivatization under precisely controlled
+                conditions.<sup class="ref">[7]</sup>
+            </p>
+
+            <p>
+                The present review undertakes a comprehensive, critically analytical examination of the 2,4-DNP test,
+                encompassing: (i) the electronic and mechanistic chemistry underlying carbonyl group reactivity; (ii)
+                the preparation, characterization, and stability of Brady's reagent; (iii) a rigorous step-by-step
+                mechanistic analysis of the condensation reaction; (iv) standardized analytical methodology and
+                confirmatory derivative melting point techniques; (v) spectroscopic and physical characterization of
+                hydrazone products; (vi) selectivity, sensitivity, and limitations of the procedure; (vii) comparative
+                analysis with related qualitative tests; (viii) modern analytical applications; and (ix) safety and
+                regulatory considerations.
+            </p>
+        </section>
+
+        <!-- §2 CARBONYL CHEMISTRY -->
+        <section class="paper-section reveal" id="carbonyl">
+            <h2 class="section-title"><span class="sec-num">§2</span>Chemistry of the Carbonyl Group</h2>
+            <div class="section-rule"></div>
+
+            <h3 class="subsection-title">2.1 Electronic Structure and Reactivity</h3>
+            <p>
+                The carbonyl group is characterized by a carbon–oxygen double bond comprising one σ-bond formed by
+                direct orbital overlap and one π-bond resulting from lateral overlap of sp²-hybridized carbon and oxygen
+                p-orbitals. The substantial electronegativity difference between oxygen (χ = 3.44 on the Pauling scale)
+                and carbon (χ = 2.55) produces a strongly polarized bond, with electron density concentrated at oxygen
+                and a partial positive charge residing at the carbonyl carbon (C<sup>δ+</sup>=O<sup>δ−</sup>). This
+                charge distribution is reinforced by the contribution of the resonance form C<sup>+</sup>–O<sup>−</sup>,
+                rendering the carbonyl carbon significantly electrophilic.<sup class="ref">[8]</sup>
+            </p>
+
+            <p>
+                The sp² hybridization of the carbonyl carbon imposes a planar geometry around the carbonyl center, with
+                bond angles approximating 120°. This planarity and the accessible, low-lying π*-antibonding orbital
+                facilitate attack by nucleophiles at the carbonyl carbon along a trajectory approximately perpendicular
+                to the molecular plane (the Bürgi–Dunitz angle, ≈107°). The consequent tetrahedral intermediate
+                possesses an sp³ carbon center and disrupts the planarity of the original carbonyl system.<sup
+                    class="ref">[9]</sup>
+            </p>
+
+            <h3 class="subsection-title">2.2 Aldehyde vs. Ketone Reactivity</h3>
+            <p>
+                The differential reactivity of aldehydes and ketones toward nucleophilic attack is governed by two
+                complementary factors: electronic and steric. Electronically, the alkyl substituents in ketones are
+                electron-donating via inductive and hyperconjugative mechanisms, thereby attenuating the
+                electrophilicity of the carbonyl carbon relative to aldehyde carbons bearing at least one hydrogen
+                substituent. Sterically, the two carbon-containing groups flanking the ketone carbonyl impose greater
+                hindrance to approaching nucleophiles compared to the aldehyde system in which one substituent is a
+                small hydrogen atom. These combined effects render aldehydes, in general, more reactive than ketones
+                toward nucleophilic addition reactions, including the condensation with 2,4-dinitrophenylhydrazine.<sup
+                    class="ref">[10]</sup>
+            </p>
+
+            <p>
+                Aromatic carbonyl compounds exhibit modified reactivity due to resonance delocalization of the carbonyl
+                π-system into the aromatic ring, as in benzaldehyde or acetophenone. Extended conjugation reduces the
+                electrophilicity of the carbonyl carbon, typically necessitating mildly more forcing conditions or
+                extended reaction times for complete hydrazone formation. This phenomenon is diagnostically significant,
+                as the resulting hydrazone products exhibit bathochromically shifted UV-Vis absorption maxima and
+                correspondingly distinct visible coloration.<sup class="ref">[11]</sup>
+            </p>
+        </section>
+
+        <!-- §3 REAGENT CHARACTERIZATION -->
+        <section class="paper-section reveal" id="reagent">
+            <h2 class="section-title"><span class="sec-num">§3</span>Reagent Characterization</h2>
+            <div class="section-rule"></div>
+
+            <div class="reagent-block">
+                <h4>2,4-Dinitrophenylhydrazine — Physical &amp; Chemical Data</h4>
+                <div class="field"><span class="label">IUPAC Name:</span> <span
+                        class="val">(2,4-dinitrophenyl)hydrazine</span></div>
+                <div class="field"><span class="label">CAS Registry:</span> <span class="val">119-26-6</span></div>
+                <div class="field"><span class="label">Molecular Formula:</span> <span class="val">C₆H₆N₄O₄</span></div>
+                <div class="field"><span class="label">Molecular Weight:</span> <span class="val">198.14 g mol⁻¹</span>
+                </div>
+                <div class="field"><span class="label">Appearance:</span> <span class="val">Orange-red crystalline
+                        powder</span></div>
+                <div class="field"><span class="label">Melting Point:</span> <span class="val">194–198 °C
+                        (decomposes)</span></div>
+                <div class="field"><span class="label">Solubility (H₂O):</span> <span class="val">Slightly soluble;
+                        freely soluble in acidic media</span></div>
+                <div class="field"><span class="label">pKa (–NH₂):</span> <span class="val">~3.9 (conjugate acid)</span>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">3.1 Structural Description</h3>
+            <p>
+                2,4-Dinitrophenylhydrazine consists of a phenyl ring bearing nitro substituents at the 2- and
+                4-positions, to which a hydrazino group (–NH–NH₂) is attached at the 1-position. The two
+                electron-withdrawing nitro groups render the molecule a powerful nucleophile at the terminal amino
+                nitrogen by inductive destabilization of the aromatic ring and concomitant activation of the hydrazino
+                function. The molecule is planar in its crystalline form, with the phenyl ring and hydrazino group
+                participating in an extended hydrogen-bonding network.<sup class="ref">[12]</sup>
+            </p>
+
+            <h3 class="subsection-title">3.2 Preparation of Brady's Reagent</h3>
+            <p>
+                The standardized preparation of Brady's reagent involves dissolving 2,4-dinitrophenylhydrazine in a
+                methanolic or ethanolic solution acidified with concentrated sulfuric acid. A typical formulation
+                specifies the dissolution of 3 g of 2,4-DNP in a mixture of 15 mL of concentrated H₂SO₄ and 20 mL of
+                distilled water, subsequently diluted to 100 mL with 95% ethanol or methanol.<sup
+                    class="ref">[2,13]</sup> The resulting solution is a deep red-orange liquid of strongly acidic
+                character (pH typically < 1). </p>
+
+                    <p>
+                        The role of concentrated sulfuric acid is threefold: (i) it protonates the carbonyl oxygen of
+                        the substrate during the initial phase of the reaction, markedly enhancing the electrophilicity
+                        of the carbonyl carbon; (ii) it maintains the solubility of 2,4-DNP, which is poorly soluble in
+                        neutral aqueous media; and (iii) it catalyzes the dehydration step in the later stages of the
+                        condensation, facilitating expulsion of water and driving the equilibrium toward hydrazone
+                        product formation.<sup class="ref">[8]</sup>
+                    </p>
+
+                    <div class="callout info">
+                        <span class="callout-label">Stability Note</span>
+                        Brady's reagent is susceptible to degradation upon prolonged storage or exposure to light.
+                        Oxidative decomposition of 2,4-DNP and solvent evaporation can produce false-positive turbidity
+                        in aged samples. Freshly prepared reagent is recommended for analytical determinations, and
+                        stored solutions should be maintained in amber glass bottles at 4–8 °C under inert
+                        atmosphere.<sup class="ref">[13]</sup>
+                    </div>
+        </section>
+
+        <!-- §4 MECHANISM -->
+        <section class="paper-section reveal" id="mechanism">
+            <h2 class="section-title"><span class="sec-num">§4</span>Reaction Mechanism and Kinetics</h2>
+            <div class="section-rule"></div>
+
+            <p>
+                The formation of 2,4-dinitrophenylhydrazones from carbonyl compounds and 2,4-DNP proceeds via a
+                nucleophilic addition-elimination (condensation) mechanism that can be dissected into five discrete
+                mechanistic stages.<sup class="ref">[8,9]</sup>
+            </p>
+
+            <div class="chem-box" data-label="Mechanistic Pathway — Nucleophilic Addition-Elimination">
+                <span class="step">Step 1 · Acid-Catalyzed Carbonyl Activation</span>
+                <span class="compound">R₁C(=O)R₂</span> + H⁺ <span class="arrow">⟶</span> <span
+                    class="compound">R₁C(=OH⁺)R₂</span>
+                <span class="note">Protonation of oxygen → enhanced electrophilicity at carbonyl carbon</span>
+
+                <span class="step">Step 2 · Nucleophilic Attack (Addition)</span>
+                <span class="compound">R₁C(=OH⁺)R₂</span> + <span class="compound">ArNH–NH₂</span> <span
+                    class="arrow">⟶</span> <span class="compound">R₁C(OH)(NHAr–NH₂)R₂</span>⁺
+                <span class="note">Terminal –NH₂ of 2,4-DNP attacks carbonyl carbon → oxocarbenium intermediate</span>
+
+                <span class="step">Step 3 · Proton Transfer (Formation of Carbinolamine)</span>
+                <span class="compound">R₁C(OH)(NHAr–NH₂⁺)R₂</span> <span class="arrow">⟶</span> <span
+                    class="compound">R₁C(OH)(NHAr–NH₂)R₂</span>
+                <span class="note">Deprotonation of nitrogen → neutral tetrahedral carbinolamine</span>
+
+                <span class="step">Step 4 · Acid-Catalyzed Dehydration</span>
+                <span class="compound">R₁C(OH)(NHAr–NH₂)R₂</span> + H⁺ <span class="arrow">⟶</span> <span
+                    class="compound">R₁C(=NHAr–NH₂⁺)R₂</span> + H₂O
+                <span class="note">Protonation of hydroxyl → water departure as good leaving group → iminium ion</span>
+
+                <span class="step">Step 5 · Deprotonation → Hydrazone Product</span>
+                <span class="compound">R₁C(=N⁺HAr–NH₂)R₂</span> <span class="arrow">⟶</span> <span
+                    class="compound">R₁C(=NAr–NH₂)R₂</span> + H⁺
+                <span class="note">Loss of proton yields stable 2,4-DNP hydrazone (colored precipitate) — E isomer
+                    predominant</span>
+            </div>
+
+            <p class="fig-caption"><strong>Scheme 1.</strong> Step-by-step mechanistic pathway for the acid-catalyzed
+                condensation of a carbonyl compound with 2,4-dinitrophenylhydrazine to yield a
+                2,4-dinitrophenylhydrazone derivative. Ar = 2,4-(NO₂)₂C₆H₃.</p>
+
+            <h3 class="subsection-title">4.1 Thermodynamic Driving Force</h3>
+            <p>
+                The overall condensation reaction is thermodynamically favorable, driven by the formation of the stable
+                C=N hydrazone double bond and the concomitant release of water. The extended conjugation of the C=N bond
+                with both the electron-withdrawing nitroaromatic system and, where applicable, with an unsaturated or
+                aromatic substrate, provides substantial resonance stabilization to the product. Reported equilibrium
+                constants (K<sub>eq</sub>) for phenylhydrazone formation from aliphatic aldehydes fall in the range
+                10²–10⁴ L mol⁻¹ under acidic conditions, consistent with a strongly product-favored equilibrium.<sup
+                    class="ref">[14]</sup>
+            </p>
+
+            <h3 class="subsection-title">4.2 Kinetic Considerations</h3>
+            <p>
+                Kinetic studies on related Schiff base and hydrazone condensations indicate that the rate-determining
+                step is pH-dependent. Under strongly acidic conditions (pH < 2), the rate is governed by the
+                    nucleophilic addition step (Step 2), as protonation of the carbonyl is facile but the high degree of
+                    protonation of the hydrazine nucleophile (pKa of conjugate acid ≈ 3.9) reduces effective nucleophile
+                    concentration. At intermediate pH values (~4–5), the rate-determining step shifts to the dehydration
+                    step (Step 4). Optimal kinetic conditions for the 2,4-DNP test—concentrated acid in hydroalcoholic
+                    medium—represent a pragmatic balance between these competing factors.<sup class="ref">[15]</sup>
+            </p>
+
+            <p>
+                Steric effects impose significant kinetic retardation for hindered ketones. Di-tert-butyl ketone, for
+                example, reacts negligibly with Brady's reagent under standard conditions, providing a diagnostic
+                indication in itself. Electron-deficient carbonyls—such as those α,β-unsaturated to additional carbonyl
+                groups (1,3-diketones)—exhibit enhanced reactivity due to increased electrophilicity at the carbonyl
+                carbon, sometimes leading to complex bis-hydrazone formation.<sup class="ref">[10]</sup>
+            </p>
+        </section>
+
+        <!-- §5 ANALYTICAL METHODOLOGY -->
+        <section class="paper-section reveal" id="methodology">
+            <h2 class="section-title"><span class="sec-num">§5</span>Analytical Methodology</h2>
+            <div class="section-rule"></div>
+
+            <h3 class="subsection-title">5.1 Standard Laboratory Procedure</h3>
+            <p>
+                The standardized 2,4-DNP test is conducted as follows: Approximately 0.1–0.3 g (or 3–5 drops if liquid)
+                of the sample under investigation is dissolved in a minimum volume of ethanol (95%) in a clean test
+                tube. Brady's reagent (2–3 mL) is added, the mixture is shaken vigorously, and the formation of a
+                precipitate is observed immediately and again after standing at ambient temperature (20–25 °C) for 5
+                minutes. If no precipitate forms, the mixture may be warmed briefly in a water bath at 50–60 °C for 2–3
+                minutes to promote reaction of less reactive ketones.<sup class="ref">[2,13]</sup>
+            </p>
+
+            <div class="callout">
+                <span class="callout-label">Result Interpretation</span>
+                <strong>Positive result:</strong> Formation of a yellow, orange, or red precipitate (2,4-DNP hydrazone)
+                — indicates presence of an aldehyde or ketone. The color provides preliminary indication of conjugation
+                extent. <br><br>
+                <strong>Negative result:</strong> Solution remains clear or only a faint turbidity appears — indicates
+                absence of reactive carbonyl functionality (no aldehyde or ketone detected under test conditions).
+            </div>
+
+            <h3 class="subsection-title">5.2 Confirmatory Melting Point Determination</h3>
+            <p>
+                The diagnostic utility of the 2,4-DNP test is considerably enhanced by the isolation and purification of
+                the hydrazone derivative followed by melting point determination. The precipitate is collected by vacuum
+                filtration, washed with cold ethanol to remove unreacted reagent and impurities, and recrystallized from
+                hot ethanol, ethyl acetate, or dimethylformamide. The melting point of the purified derivative is
+                measured and compared against published compilations of 2,4-DNP hydrazone melting points—the most
+                authoritative of which remains the tables compiled by Shriner, Hermann, Morrill, Curtin, and Fuson in
+                their classical analytical reference—permitting unambiguous identification of the parent carbonyl
+                compound.<sup class="ref">[2]</sup>
+            </p>
+
+            <p>
+                Reported melting points span a wide diagnostic range: formaldehyde-2,4-DNP hydrazone melts at 166 °C;
+                acetaldehyde at 168 °C; acetone at 126 °C; benzaldehyde at 237 °C; cyclohexanone at 162 °C; and methyl
+                ethyl ketone at 117 °C, among hundreds of tabulated values. The combination of derivative color,
+                solubility, and melting point thus constitutes a highly informative diagnostic fingerprint.<sup
+                    class="ref">[2,13]</sup>
+            </p>
+        </section>
+
+        <!-- §6 SPECTROSCOPIC -->
+        <section class="paper-section reveal" id="spectroscopic">
+            <h2 class="section-title"><span class="sec-num">§6</span>Spectroscopic and Physical Characterization</h2>
+            <div class="section-rule"></div>
+
+            <h3 class="subsection-title">6.1 Chromatic Variation and Conjugation</h3>
+            <p>
+                The visible color of 2,4-DNP hydrazone precipitates is one of the most immediately diagnostic and
+                instructive features of the test. The observed coloration—ranging from pale yellow through orange to
+                deep red—arises from the extension of the π-conjugated chromophore system in the hydrazone product and
+                is governed by the bathochromic shift of the principal UV-Vis absorption band into the visible
+                region.<sup class="ref">[11]</sup>
+            </p>
+
+            <div class="color-spectrum">
+                <div class="cs-item yellow">
+                    <span class="cs-label">Yellow</span>
+                    <strong>Saturated carbonyls</strong><br>
+                    <small>e.g., acetaldehyde, acetone</small><br>
+                    <small>λ<sub>max</sub> ≈ 340–355 nm</small>
+                </div>
+                <div class="cs-item orange">
+                    <span class="cs-label">Orange</span>
+                    <strong>Conjugated carbonyls</strong><br>
+                    <small>e.g., cyclohexanone, methyl vinyl ketone</small><br>
+                    <small>λ<sub>max</sub> ≈ 355–390 nm</small>
+                </div>
+                <div class="cs-item red">
+                    <span class="cs-label">Red / Deep Red</span>
+                    <strong>Aryl &amp; α,β-unsaturated</strong><br>
+                    <small>e.g., benzaldehyde, cinnamaldehyde</small><br>
+                    <small>λ<sub>max</sub> ≈ 390–420 nm</small>
+                </div>
+            </div>
+            <p class="fig-caption"><strong>Figure 1.</strong> Chromatic classification of 2,4-DNP hydrazone precipitates
+                correlated with the degree of π-conjugation in the parent carbonyl compound and approximate UV-Vis
+                absorption maxima. Colors are illustrative of typical observations under ambient laboratory
+                illumination.</p>
+
+            <p>
+                Saturated aliphatic aldehydes and ketones produce yellow hydrazones whose UV-Vis spectra exhibit a
+                principal absorption band around 340–355 nm, arising from the π→π* transition of the conjugated –N–N=C–
+                system within the 2,4-dinitrophenyl chromophore. Conjugated or α,β-unsaturated carbonyl substrates yield
+                orange derivatives (λ<sub>max</sub> ≈ 355–390 nm), while aromatic carbonyl compounds and extended enals
+                produce red to maroon derivatives absorbing at 390–420 nm. These correlations reflect the classical
+                Fieser–Kuhn rules for extended chromophore absorption.<sup class="ref">[11,16]</sup>
+            </p>
+
+            <h3 class="subsection-title">6.2 Infrared Spectroscopy</h3>
+            <p>
+                Infrared spectra of 2,4-DNP hydrazones exhibit several characteristic absorptions. The C=N stretching
+                vibration appears as a strong band in the region 1610–1640 cm⁻¹, distinctly shifted from the parent
+                carbonyl C=O stretch typically observed at 1700–1740 cm⁻¹ (aldehyde) or 1705–1725 cm⁻¹ (ketone). The N–H
+                stretch of the secondary hydrazino group appears as a broad medium absorption centered around 3300–3380
+                cm⁻¹. The two nitro groups contribute characteristic asymmetric and symmetric N–O stretching bands at
+                approximately 1530 cm⁻¹ and 1340 cm⁻¹, respectively. The disappearance of the substrate C=O band and
+                emergence of the C=N band provides unambiguous spectroscopic confirmation of condensation product
+                formation.<sup class="ref">[17]</sup>
+            </p>
+
+            <h3 class="subsection-title">6.3 NMR Spectroscopy</h3>
+            <p>
+                ¹H NMR spectra of 2,4-DNP hydrazones in deuterated dimethylsulfoxide (DMSO-d₆) or CDCl₃ display a
+                characteristic singlet for the azomethine proton (=CH–) in the range δ 7.5–8.8 ppm, depending on the
+                electronic character of the attached carbon substituents. The NH proton resonates as a broad singlet at
+                δ 10.5–11.8 ppm, and the aromatic protons of the 2,4-dinitrophenyl ring appear as distinctive doublets
+                at δ 8.3–9.1 ppm. The E/Z isomer ratio, predominantly favoring the E-configuration, may be assessed
+                through coupling constants and NOE correlations.<sup class="ref">[18]</sup>
+            </p>
+        </section>
+
+        <!-- §7 SELECTIVITY & LIMITATIONS -->
+        <section class="paper-section reveal" id="selectivity">
+            <h2 class="section-title"><span class="sec-num">§7</span>Selectivity, Sensitivity, and Limitations</h2>
+            <div class="section-rule"></div>
+
+            <h3 class="subsection-title">7.1 Selectivity Profile</h3>
+            <p>
+                Brady's test is selective for carbonyl compounds possessing the free >C=O functionality—specifically,
+                aldehydes and ketones in their non-hydrated forms. Carboxylic acids do not yield precipitates under
+                standard test conditions, as the carbonyl carbon of the carboxyl group is substantially less
+                electrophilic due to resonance donation from the adjacent hydroxyl oxygen, and the thermodynamic driving
+                force for hydrazone formation from carboxylic acids is negligible. Esters and amides are similarly
+                unreactive, for analogous electronic reasons: resonance delocalization of the lone pair on the
+                heteroatom oxygen or nitrogen into the carbonyl system effectively reduces the electrophilicity of the
+                carbonyl carbon below the threshold required for nucleophilic attack by the moderately nucleophilic
+                2,4-DNP under mild acidic conditions.<sup class="ref">[8,10]</sup>
+            </p>
+
+            <p>
+                α,β-Unsaturated carbonyl compounds (enones, enals) react positively and typically yield orange to red
+                products. 1,3-Dicarbonyl compounds such as acetylacetone and ethyl acetoacetate may react at one or both
+                carbonyl centers; under acidic conditions, the keto tautomer predominates and yields a positive result,
+                although stoichiometry and product composition can be complex. Quinones, being diketonic cyclic
+                compounds, generally yield positive results, though the specific color and precipitate appearance may be
+                atypical.<sup class="ref">[10]</sup>
+            </p>
+
+            <h3 class="subsection-title">7.2 Sensitivity and Detection Limits</h3>
+            <p>
+                Under standard procedural conditions, Brady's test is reported to detect aldehyde or ketone
+                concentrations of approximately 0.5–1.0% (w/v) in the test solution—corresponding to detection limits of
+                the order of 5–10 mg per test in a 1 mL reaction volume. This sensitivity, while adequate for
+                conventional bench-scale qualitative analysis, is substantially inferior to modern HPLC-DNPH methods,
+                which achieve detection limits in the ppb (µg L⁻¹) to sub-ppb range for atmospheric carbonyl analytes
+                following pre-concentration on solid-phase DNPH-impregnated cartridges.<sup class="ref">[6,7]</sup>
+            </p>
+
+            <h3 class="subsection-title">7.3 False Positives and Negatives</h3>
+            <p>
+                Several classes of compounds and experimental conditions are recognized sources of analytical error in
+                the 2,4-DNP test. Peroxides, which may form in aged samples of ethers and other autoxidizable compounds,
+                can oxidize 2,4-DNP to produce turbid or colored products unrelated to carbonyl condensation—a
+                documented source of false-positive results.<sup class="ref">[2]</sup> Reducing sugars, while
+                technically aldehydes at the hemiacetal equilibrium, may produce faint or delayed precipitates due to
+                the cyclic intramolecular hemiacetal stabilization that suppresses free carbonyl concentration. Strongly
+                conjugated or sterically hindered ketones (3,3-dimethyl-2-butanone, di-tert-butyl ketone) may fail to
+                react under standard conditions—false-negative outcomes attributable to kinetic rather than
+                thermodynamic factors.<sup class="ref">[10,13]</sup>
+            </p>
+
+            <div class="callout warning">
+                <span class="callout-label">Critical Limitation</span>
+                Brady's test, while diagnostic for the presence of aldehyde or ketone functionality, cannot
+                unambiguously distinguish between these two classes under standard conditions. Secondary orthogonal
+                tests—Tollens', Fehling's, or Schiff's—are required to confirm the presence of an aldehyde in preference
+                to a ketone.
+            </div>
+        </section>
+
+        <!-- §8 COMPARATIVE ANALYSIS -->
+        <section class="paper-section reveal" id="comparative">
+            <h2 class="section-title"><span class="sec-num">§8</span>Comparative Analysis with Related Qualitative Tests
+            </h2>
+            <div class="section-rule"></div>
+
+            <p>
+                The diagnostic value of Brady's test is best appreciated through systematic comparison with the
+                principal alternative qualitative tests for carbonyl functionality: Tollens' test, Fehling's test,
+                Schiff's test (pararosaniline), and the iodoform test. Each procedure possesses a distinct selectivity
+                profile and mechanistic basis that confers complementary diagnostic information.<sup
+                    class="ref">[2,19]</sup>
+            </p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Reagent</th>
+                            <th>Mechanism</th>
+                            <th>Detects</th>
+                            <th>Result (Positive)</th>
+                            <th>Key Limitation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Brady's (2,4-DNP)</td>
+                            <td>2,4-DNP / H₂SO₄ / EtOH</td>
+                            <td>Nucleophilic addition-elimination (condensation)</td>
+                            <td>Aldehydes &amp; Ketones</td>
+                            <td>Yellow/orange/red ppt</td>
+                            <td>Cannot distinguish aldehyde from ketone; false positives with peroxides</td>
+                        </tr>
+                        <tr>
+                            <td>Tollens'</td>
+                            <td>[Ag(NH₃)₂]⁺ (ammoniacal AgNO₃)</td>
+                            <td>Oxidation of aldehyde; Ag⁺ → Ag⁰ (silver mirror)</td>
+                            <td>Aldehydes only (+ formic acid, some sugars)</td>
+                            <td>Silver mirror on glass</td>
+                            <td>Must use freshly prepared (explosive fulminating silver on aging); does not detect
+                                ketones</td>
+                        </tr>
+                        <tr>
+                            <td>Fehling's</td>
+                            <td>Cu²⁺/tartrate alkaline solution</td>
+                            <td>Oxidation of aldehyde; Cu²⁺ → Cu⁺ (Cu₂O)</td>
+                            <td>Aliphatic aldehydes &amp; reducing sugars; NOT aromatic aldehydes</td>
+                            <td>Brick-red Cu₂O ppt</td>
+                            <td>Aromatic aldehydes (e.g., benzaldehyde) give negative result; ketones unreactive</td>
+                        </tr>
+                        <tr>
+                            <td>Schiff's</td>
+                            <td>Pararosaniline / SO₂ (decolorized fuchsin)</td>
+                            <td>Re-formation of chromophoric Schiff base with aldehyde</td>
+                            <td>Aldehydes (sensitive); some ketones weakly positive</td>
+                            <td>Magenta/purple color</td>
+                            <td>Formic acid and SO₂ can restore color (false positive); slow with ketones</td>
+                        </tr>
+                        <tr>
+                            <td>Iodoform</td>
+                            <td>I₂ / KI / NaOH</td>
+                            <td>Halogenation-oxidation (haloform reaction)</td>
+                            <td>Methyl ketones (CH₃COR) &amp; acetaldehyde; methyl carbinols oxidized in situ</td>
+                            <td>Yellow CHI₃ ppt (antiseptic odor)</td>
+                            <td>Highly specific to methyl ketones; does not detect general aldehydes or ketones</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="fig-caption"><strong>Table 1.</strong> Structured comparison of principal qualitative tests for
+                carbonyl functionality, detailing reagent composition, mechanistic basis, selectivity profile, positive
+                result characteristics, and key diagnostic limitations.</p>
+
+            <p>
+                The optimal diagnostic strategy employs Brady's test as the initial screening procedure, exploiting its
+                broad selectivity for all reactive carbonyl compounds. A positive Brady's test is followed by Tollens'
+                or Fehling's test to determine whether the compound is an aldehyde. A negative Tollens'/Fehling's result
+                in the context of a positive Brady's test strongly implicates a ketone. The iodoform test provides
+                further structural information regarding the presence or absence of the methyl ketone (CH₃C=O)
+                motif.<sup class="ref">[2,19]</sup>
+            </p>
+        </section>
+
+        <!-- §9 APPLICATIONS -->
+        <section class="paper-section reveal" id="applications">
+            <h2 class="section-title"><span class="sec-num">§9</span>Applications</h2>
+            <div class="section-rule"></div>
+
+            <h3 class="subsection-title">9.1 Classical Qualitative Organic Analysis</h3>
+            <p>
+                In the classical tradition of qualitative organic analysis, as codified in reference texts by Shriner et
+                al. and the systematic schemes of Dey and Bose, the 2,4-DNP test occupies a pivotal role in the
+                preliminary classification of organic unknowns. The formation of a characteristic derivative whose
+                melting point is precisely determinable provides a level of compound identification rigor that purely
+                colorimetric tests cannot match. This derivative-based strategy—the preparation and purification of the
+                2,4-DNP hydrazone followed by melting point comparison—represents a classical approach to compound
+                confirmation that has been employed routinely in preparative and synthetic laboratories for over eight
+                decades.<sup class="ref">[2,3]</sup>
+            </p>
+
+            <h3 class="subsection-title">9.2 Environmental Analytical Chemistry — HPLC-DNPH Methods</h3>
+            <p>
+                The most significant modern extension of the 2,4-DNP derivatization principle is its adaptation to
+                HPLC-based environmental monitoring of atmospheric carbonyl compounds. The US EPA-published Method
+                TO-11A specifies the collection of ambient air samples through DNPH-impregnated silica cartridges, with
+                subsequent solvent extraction (acetonitrile) and reversed-phase HPLC separation with UV detection at 360
+                nm. This methodology achieves simultaneous quantification of formaldehyde, acetaldehyde, acrolein,
+                acetone, propionaldehyde, crotonaldehyde, and numerous other carbonyl pollutants at sub-ppb
+                concentrations in air, representing a direct descendant of Brady's original bench procedure scaled to
+                trace analytical sensitivity.<sup class="ref">[6,20]</sup>
+            </p>
+
+            <p>
+                Related DNPH-HPLC methodologies have been applied to the determination of carbonyl compounds in water
+                samples, indoor air environments, vehicle exhaust gases, and occupational exposure monitoring. The
+                versatility and robustness of the DNPH derivatization approach, combined with the spectroscopic
+                discriminating power of HPLC-UV or HPLC-MS/MS detection, underscores the continuing importance of this
+                chemistry in environmental science.<sup class="ref">[6,20]</sup>
+            </p>
+
+            <h3 class="subsection-title">9.3 Pharmaceutical Applications</h3>
+            <p>
+                In pharmaceutical analysis, DNPH derivatization serves as a validated method for the determination of
+                aldehyde impurities in drug substances and excipients, as specified in guidance documents from
+                regulatory agencies including the International Council for Harmonisation of Technical Requirements for
+                Pharmaceuticals for Human Use (ICH). Formaldehyde and acetaldehyde, potential process-related impurities
+                in manufacturing, are quantified against DNPH derivative standards by HPLC-UV with limits of detection
+                commonly below 1 ppm, satisfying stringent quality control requirements.<sup class="ref">[7,21]</sup>
+            </p>
+
+            <h3 class="subsection-title">9.4 Food Chemistry Applications</h3>
+            <p>
+                Carbonyl compounds, formed through lipid oxidation (particularly malondialdehyde), Maillard reaction
+                intermediates, and fermentation, serve as markers of food quality and deterioration. DNPH derivatization
+                coupled with HPLC analysis has been employed for the determination of aldehydic carbonyl compounds in
+                edible oils, meat products, wines, and spirits, providing both qualitative identification and
+                quantitative measurement of oxidative stress markers in food matrices.<sup class="ref">[21]</sup>
+            </p>
+        </section>
+
+        <!-- §10 SAFETY -->
+        <section class="paper-section reveal" id="safety">
+            <h2 class="section-title"><span class="sec-num">§10</span>Safety, Handling, and Regulatory Considerations
+            </h2>
+            <div class="section-rule"></div>
+
+            <div class="callout warning">
+                <span class="callout-label">⚠ Critical Hazard Warning</span>
+                Anhydrous or dry 2,4-dinitrophenylhydrazine is classified as a flammable solid and potential explosive
+                substance (UN Number 3342 / 1320). Dry material must never be handled without appropriate safety
+                precautions. All laboratory manipulations must be conducted with reagent maintained in the wet or
+                solution state.
+            </div>
+
+            <h3 class="subsection-title">10.1 Explosive Hazard</h3>
+            <p>
+                The primary acute safety hazard associated with 2,4-DNP is its classification as a deflagrating
+                explosive when in the dry state. The presence of two ortho/para nitro groups on the aromatic ring,
+                combined with the reducing hydrazino group, creates an intramolecularly oxidant-fuel system capable of
+                rapid exothermic decomposition when subjected to heat, friction, or impact. For this reason, commercial
+                2,4-DNP is supplied and stored as a wet paste containing ≥30% water (w/w) or as a dilute solution. Under
+                no circumstances should the material be evaporated to dryness. Brady's reagent in solution is not
+                explosive but should be stored away from open flames due to the flammability of the ethanol/methanol
+                solvent.<sup class="ref">[22]</sup>
+            </p>
+
+            <h3 class="subsection-title">10.2 Mutagenicity and Carcinogenicity</h3>
+            <p>
+                2,4-Dinitrophenylhydrazine has demonstrated mutagenic activity in the Ames test (Salmonella typhimurium
+                TA98 and TA100 strains), consistent with its classification as a potential genotoxic hazard. The
+                International Agency for Research on Cancer (IARC) has not independently classified 2,4-DNP, but
+                compounds in this structural class are associated with mutagenic nitroreduction products (aromatic
+                amines) following metabolic activation. Contact with skin and mucous membranes should be avoided;
+                prolonged or repeated exposure may present sensitization risks.<sup class="ref">[22,23]</sup>
+            </p>
+
+            <h3 class="subsection-title">10.3 Storage, Waste Disposal, and Regulatory Compliance</h3>
+            <p>
+                2,4-DNP and Brady's reagent solutions should be stored in well-sealed amber glass containers at 4–8 °C,
+                separated from oxidizing agents, strong acids in concentrated form, and all ignition sources. Waste
+                reagent and hydrazone precipitates must be collected in appropriate chemical waste containers and
+                disposed of in accordance with local environmental regulations and institutional chemical hygiene plans.
+                In many jurisdictions, nitroaromatic waste materials require disposal through licensed hazardous waste
+                contractors. The compound is subject to transport regulations under the ADR/RID (Europe), IATA DGR, and
+                IMDG Code for international shipment.<sup class="ref">[22]</sup>
+            </p>
+        </section>
+
+        <!-- §11 CONCLUSION -->
+        <section class="paper-section reveal" id="conclusion">
+            <h2 class="section-title"><span class="sec-num">§11</span>Conclusion</h2>
+            <div class="section-rule"></div>
+
+            <p>
+                The 2,4-dinitrophenylhydrazine test—Brady's test—represents a paradigmatic example of a classical
+                qualitative chemical procedure whose mechanistic soundness, chemical selectivity, and practical utility
+                have ensured its continued relevance across a century of analytical chemistry development. The
+                nucleophilic addition-elimination condensation mechanism, proceeding through a well-characterized
+                tetrahedral carbinolamine intermediate and driven by thermodynamically favorable C=N hydrazone bond
+                formation, provides an intellectually complete and rigorously grounded basis for the observed analytical
+                outcomes.
+            </p>
+
+            <p>
+                The chromatic variation of the hydrazone products—from pale yellow through orange to deep red as a
+                function of π-conjugation extent—constitutes a visually informative indicator that extends beyond mere
+                positive/negative binary classification. Combined with recrystallization and derivative melting point
+                determination, the test achieves a degree of compound identification specificity unmatched by purely
+                colorimetric procedures.
+            </p>
+
+            <p>
+                The critical limitations of the procedure—its inability to independently distinguish aldehydes from
+                ketones, its susceptibility to false positives from peroxide contamination, and its failure to detect
+                sterically hindered or electronically deactivated carbonyls—are well understood and addressed through
+                judicious application of complementary tests. The integration of Brady's test into a coherent diagnostic
+                battery remains the most effective strategy for classical qualitative organic analysis.
+            </p>
+
+            <p>
+                The translation of the 2,4-DNP derivatization principle to modern HPLC-based atmospheric,
+                pharmaceutical, and food analytical applications demonstrates the remarkable adaptability of this
+                reaction chemistry. Future research directions of merit include the development of solid-phase DNPH
+                materials with enhanced capacity and selectivity for trace carbonyl analysis in complex matrices, the
+                exploration of DNPH derivatization compatible with mass spectrometric detection for structural
+                elucidation of unknown carbonyl pollutants, and the refinement of microfluidic or miniaturized
+                DNPH-based sensor platforms for real-time field monitoring. The venerable Brady's test, appropriately
+                adapted to the tools and demands of twenty-first-century analytical science, thus retains a vibrant and
+                evolving research frontier.
+            </p>
+        </section>
+
+        <!-- §REF REFERENCES -->
+        <section class="paper-section reveal" id="references">
+            <h2 class="section-title"><span class="sec-num">REF</span>References</h2>
+            <div class="section-rule"></div>
+
+            <ol class="references-list">
+                <li>
+                    <strong>March, J.; Smith, M. B.</strong> <em>March's Advanced Organic Chemistry: Reactions,
+                        Mechanisms, and Structure</em>, 7th ed.; John Wiley &amp; Sons: Hoboken, NJ,
+                    <strong>2013</strong>.
+                </li>
+                <li>
+                    <strong>Shriner, R. L.; Hermann, C. K. F.; Morrill, T. C.; Curtin, D. Y.; Fuson, R. C.</strong>
+                    <em>The Systematic Identification of Organic Compounds</em>, 8th ed.; John Wiley &amp; Sons: New
+                    York, <strong>2004</strong>.
+                </li>
+                <li>
+                    <strong>Brady, O. L.; Elsmie, G. V.</strong> The use of 2:4-dinitrophenylhydrazine as a reagent for
+                    aldehydes and ketones. <em>Analyst</em> <strong>1926</strong>, <em>51</em>, 77–78.
+                </li>
+                <li>
+                    <strong>Fischer, E.</strong> Über das Phenylhydrazin. <em>Ber. Dtsch. Chem. Ges.</em>
+                    <strong>1875</strong>, <em>8</em>, 589–594.
+                </li>
+                <li>
+                    <strong>Clayden, J.; Greeves, N.; Warren, S.</strong> <em>Organic Chemistry</em>, 2nd ed.; Oxford
+                    University Press: Oxford, <strong>2012</strong>.
+                </li>
+                <li>
+                    <strong>Possanzini, M.; Di Palo, V.; Cecinato, A.</strong> Sources and photodecomposition of
+                    formaldehyde and acetaldehyde in Rome ambient air. <em>Atmos. Environ.</em> <strong>2002</strong>,
+                    <em>36</em>, 3195–3201.
+                </li>
+                <li>
+                    <strong>Görög, S.</strong> The importance and the challenges of impurity profiling in modern
+                    pharmaceutical analysis. <em>TrAC Trends Anal. Chem.</em> <strong>2006</strong>, <em>25</em>,
+                    755–757.
+                </li>
+                <li>
+                    <strong>Clayden, J.; Greeves, N.; Warren, S.</strong> Nucleophilic addition to the carbonyl group.
+                    <em>Organic Chemistry</em>, 2nd ed.; Oxford University Press: Oxford, <strong>2012</strong>; Chapter
+                    6.
+                </li>
+                <li>
+                    <strong>Bürgi, H. B.; Dunitz, J. D.; Shefter, E.</strong> Geometrical reaction coordinates. II.
+                    Nucleophilic addition to a carbonyl group. <em>J. Am. Chem. Soc.</em> <strong>1973</strong>,
+                    <em>95</em>, 5065–5067.
+                </li>
+                <li>
+                    <strong>Smith, M. B.</strong> <em>Organic Chemistry: An Acid-Base Approach</em>, 2nd ed.; CRC Press:
+                    Boca Raton, FL, <strong>2016</strong>.
+                </li>
+                <li>
+                    <strong>Scott, A. I.</strong> <em>Interpretation of the UV Spectra of Natural Products</em>;
+                    Pergamon Press: Oxford, <strong>1964</strong>.
+                </li>
+                <li>
+                    <strong>Alarcón, S. H.; Olivieri, A. C.; Labadie, G. R.; Cravero, R. M.; González-Sierra,
+                        M.</strong> Conformational analysis of 2,4-dinitrophenylhydrazone derivatives by NMR
+                    spectroscopy. <em>J. Mol. Struct.</em> <strong>1995</strong>, <em>364</em>, 145–154.
+                </li>
+                <li>
+                    <strong>Pavia, D. L.; Lampman, G. M.; Kriz, G. S.; Vyvyan, J. R.</strong> <em>Introduction to
+                        Spectroscopy</em>, 5th ed.; Cengage Learning: Stamford, CT, <strong>2015</strong>.
+                </li>
+                <li>
+                    <strong>Jencks, W. P.</strong> Studies on the mechanism of oxime and semicarbazone formation. <em>J.
+                        Am. Chem. Soc.</em> <strong>1959</strong>, <em>81</em>, 475–481.
+                </li>
+                <li>
+                    <strong>Sayer, J. M.; Peskin, M.; Jencks, W. P.</strong> Imine-forming elimination reactions. II.
+                    Rate and equilibrium constants for aliphatic imines. <em>J. Am. Chem. Soc.</em>
+                    <strong>1973</strong>, <em>95</em>, 4277–4287.
+                </li>
+                <li>
+                    <strong>Fieser, L. F.; Fieser, M.</strong> <em>Reagents for Organic Synthesis</em>; John Wiley &amp;
+                    Sons: New York, <strong>1967</strong>; Vol. 1.
+                </li>
+                <li>
+                    <strong>Rao, C. N. R.</strong> <em>Chemical Applications of Infrared Spectroscopy</em>; Academic
+                    Press: New York, <strong>1963</strong>.
+                </li>
+                <li>
+                    <strong>Claridge, T. D. W.</strong> <em>High-Resolution NMR Techniques in Organic Chemistry</em>,
+                    3rd ed.; Elsevier: Amsterdam, <strong>2016</strong>.
+                </li>
+                <li>
+                    <strong>Mohrig, J. R.; Hammond, C. N.; Schatz, P. F.</strong> <em>Techniques in Organic
+                        Chemistry</em>, 5th ed.; W. H. Freeman: New York, <strong>2017</strong>.
+                </li>
+                <li>
+                    United States Environmental Protection Agency. <em>Compendium Method TO-11A: Determination of
+                        Formaldehyde in Ambient Air Using Adsorbent Cartridge Followed by High Performance Liquid
+                        Chromatography (HPLC)</em>; EPA/625/R-96/010b; US EPA: Cincinnati, OH, <strong>1999</strong>.
+                </li>
+                <li>
+                    <strong>Frankel, E. N.</strong> <em>Lipid Oxidation</em>, 2nd ed.; Oily Press: Bridgwater, UK,
+                    <strong>2005</strong>.
+                </li>
+                <li>
+                    <strong>Sigma-Aldrich Chemical Company.</strong> Safety Data Sheet: 2,4-Dinitrophenylhydrazine; SDS
+                    No. D199303; MilliporeSigma: St. Louis, MO, <strong>2023</strong>.
+                </li>
+                <li>
+                    <strong>Maron, D. M.; Ames, B. N.</strong> Revised methods for the Salmonella mutagenicity test.
+                    <em>Mutat. Res.</em> <strong>1983</strong>, <em>113</em>, 173–215.
+                </li>
+            </ol>
+        </section>
+
+    </main>
+
+    <button id="back-to-top" aria-label="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6" />
+        </svg>
+    </button>
+
+    <script>
+        // Back to Top functionality
+        const btt = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                btt.classList.add('show');
+            } else {
+                btt.classList.remove('show');
+            }
+        });
+
+        btt.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Intersection Observer for Reveal Animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // TOC active link highlight and Mobile TOC interactions ... (Existing JS continues)
+        // Progress bar
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', () => {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.transform = `scaleX(${window.scrollY / (total || 1)})`;
+        });
+
+        // TOC active link highlight
+        const observerSections = document.querySelectorAll('.paper-section, header.journal-header');
+        const links = document.querySelectorAll('#toc-sidebar a');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    links.forEach(l => l.classList.remove('active'));
+                    const id = entry.target.id || 'abstract';
+                    const link = document.querySelector(`#toc-sidebar a[href="#${id}"]`);
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        observerSections.forEach(s => observer.observe(s));
+
+        // Mobile TOC interactions
+        const sidebar = document.getElementById('toc-sidebar');
+        const toggle = document.getElementById('sidebar-toggle');
+        const backdrop = document.getElementById('sidebar-backdrop');
+
+        const setSidebarState = (isOpen) => {
+            sidebar.classList.toggle('open', isOpen);
+            backdrop.classList.toggle('open', isOpen);
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        };
+
+        toggle.addEventListener('click', () => {
+            const isOpen = sidebar.classList.contains('open');
+            setSidebarState(!isOpen);
+        });
+
+        backdrop.addEventListener('click', () => setSidebarState(false));
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.matchMedia('(max-width: 900px)').matches) {
+                    setSidebarState(false);
+                }
+            });
+        });
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') setSidebarState(false);
+        });
+
+        window.addEventListener('resize', () => {
+            if (!window.matchMedia('(max-width: 900px)').matches) {
+                setSidebarState(false);
+            }
+        });
+    </script>
 </body>
+
 </html>
